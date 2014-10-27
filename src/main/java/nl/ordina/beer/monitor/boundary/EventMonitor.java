@@ -44,8 +44,8 @@ public class EventMonitor {
     /**
      * This method implements a lambda that filters the peers for open connections and sends the action to each peer.
      * Moreover, it implements a lambda to filter and remove any closed connections to keep the cache clean and tidy. If
-     * you are new to Lambda's, please have a look at http://docs.oracle
-     * .com/javase/tutorial/collections/streams/index.html
+     * you are new to Lambda's, please have a look at 
+     * http://docs.oracle.com/javase/tutorial/collections/streams/index.html
      *
      * @param action
      *         Observes brew action executed event raised by the brewer.
