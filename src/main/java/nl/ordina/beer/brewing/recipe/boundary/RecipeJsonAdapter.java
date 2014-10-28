@@ -19,7 +19,7 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
-public class RecipeJSONAdapter extends XmlAdapter<JsonObject, Recipe> {
+public class RecipeJsonAdapter extends XmlAdapter<JsonObject, Recipe> {
 
     @Override
     public Recipe unmarshal(JsonObject value) {
@@ -53,7 +53,7 @@ public class RecipeJSONAdapter extends XmlAdapter<JsonObject, Recipe> {
     }
 
     public Temperature unmarshalTemperature(JsonObject temperature) {
-        final int value = temperature.getInt("value");
+        final int value = Integer.parseInt(temperature.getString("value"));
         final String unit = temperature.getString("unit").toUpperCase();
         return new Temperature(value, TemperatureUnit.valueOf(unit));
     }

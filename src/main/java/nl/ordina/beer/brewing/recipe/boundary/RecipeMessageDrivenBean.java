@@ -30,7 +30,7 @@ public class RecipeMessageDrivenBean implements MessageListener {
     private Brewer brewer;
 
     //TODO
-    private RecipeJSONAdapter recipeAdapter;
+    private RecipeJsonAdapter recipeAdapter;
 
     @Override
     public void onMessage(Message message) {

@@ -13,9 +13,9 @@ import static java.util.logging.Logger.getLogger;
  * java:comp/DefaultJMSConnectionFactory. The actual queue is registered at JNDI java:app/jms/RecipeQueue
  */
 //TODO
-public class RecipeRestEndpoint {
+public class RecipeResource {
 
-    private static final Logger log = getLogger(RecipeRestEndpoint.class.getName());
+    private static final Logger log = getLogger(RecipeResource.class.getName());
 
     //TODO
     private ConnectionFactory connectionFactory;
