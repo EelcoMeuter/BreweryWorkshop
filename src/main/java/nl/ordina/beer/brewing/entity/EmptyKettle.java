@@ -33,4 +33,10 @@ public class EmptyKettle implements BrewAction {
         public void destroy() {
         }
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return true;
+    }
+    
 }

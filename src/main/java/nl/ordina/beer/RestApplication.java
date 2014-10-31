@@ -1,14 +1,13 @@
 package nl.ordina.beer;
 
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
+
 /**
- * RestApplication configuration. More information about Root Resources @
- * http://docs.oracle.com/javaee/7/tutorial/doc/jaxrs002.htm#sthref1550
- *
- * The root path should be 'resources'.
+ * RestApplication configuration.
  * 
  * @author Ordina J-Tech
  */
-// TODO 
-public class RestApplication {
-
+@ApplicationPath("resources")
+public class RestApplication extends Application {
 }

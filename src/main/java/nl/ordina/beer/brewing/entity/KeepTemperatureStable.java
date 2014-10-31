@@ -9,6 +9,7 @@ import java.time.Duration;
 import java.util.logging.Logger;
 
 import static java.lang.String.format;
+import java.util.Objects;
 
 public class KeepTemperatureStable implements BrewAction {
 
@@ -55,4 +56,26 @@ public class KeepTemperatureStable implements BrewAction {
         public void destroy() {
         }
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final KeepTemperatureStable other = (KeepTemperatureStable) obj;
+        if (!Objects.equals(this.duration, other.duration)) {
+            return false;
+        }
+        return true;
+    }
+
 }

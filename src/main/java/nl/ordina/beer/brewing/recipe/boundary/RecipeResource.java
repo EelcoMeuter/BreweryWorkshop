@@ -1,31 +1,38 @@
 package nl.ordina.beer.brewing.recipe.boundary;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.Resource;
+import javax.inject.Inject;
 import javax.jms.ConnectionFactory;
+import javax.jms.JMSContext;
 import javax.jms.Queue;
 import javax.json.JsonObject;
-import java.util.logging.Logger;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.MediaType;
 
-import static java.util.logging.Logger.getLogger;
-
-/**
- * This is the recipe REST endpoint for the path " brewer/recipe". It consumes a JSON recipe object with a htpp POST
- * method and sends it via JMS to the backend. The JSON object is send as text message. The JMS Connection factory uses the JNDI
- * java:comp/DefaultJMSConnectionFactory. The actual queue is registered at JNDI java:app/jms/RecipeQueue
- */
-//TODO
+@Path("brewer/recipe")
 public class RecipeResource {
 
-    private static final Logger log = getLogger(RecipeResource.class.getName());
+    @Inject
+    private transient Logger logger;
 
-    //TODO
+    @Resource(lookup = "java:comp/DefaultJMSConnectionFactory")
     private ConnectionFactory connectionFactory;
-
-    //TODO
+    @Resource(lookup = "java:app/jms/RecipeQueue")
     private Queue queue;
 
-    //TODO
-    public void post(JsonObject recipe) {
 
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void post(JsonObject recipe) {
+        try (JMSContext context = connectionFactory.createContext();) {
+            context.createProducer().send(queue, recipe.toString());
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, e.getMessage(), e);
+        }
     }
 
 }

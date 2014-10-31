@@ -7,8 +7,12 @@ import javax.xml.bind.annotation.XmlEnumValue;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Volume implements Comparable<Volume> {
 
-    private int value;
+    public enum VolumeUnit {
+        @XmlEnumValue("liter")
+        LITER
+    }
 
+    private int value;
     private VolumeUnit unit;
 
     public Volume() {
@@ -37,6 +41,7 @@ public class Volume implements Comparable<Volume> {
         return value < o.value ? -1 : value > o.value ? 1 : 0;
     }
 
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -55,11 +60,6 @@ public class Volume implements Comparable<Volume> {
     @Override
     public String toString() {
         return "Volume{" + "value=" + value + ", unit=" + unit + '}';
-    }
-
-    public enum VolumeUnit {
-        @XmlEnumValue("liter")
-        LITER
     }
 
 }

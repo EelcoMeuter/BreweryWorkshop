@@ -14,16 +14,17 @@ import java.util.logging.Logger;
 import static java.lang.String.format;
 
 /**
- * This is the actual brewer. The one that makes the beer. There should only be one.
- *
+ * This is the actual brewer. The one that makes the beer.
+ * 
  * @author Ordina J-Tech
  */
 @ApplicationScoped
 public class Brewer {
 
-    final Queue<BrewAction> queue = new ConcurrentLinkedQueue<>();
+    @Inject
+    private transient Logger logger;
 
-    private Logger logger = Logger.getLogger(getClass().getName());
+    final Queue<BrewAction> queue = new ConcurrentLinkedQueue<>();
 
     @Inject
     private Kettle kettle;
@@ -41,9 +42,7 @@ public class Brewer {
         if (queue.isEmpty()) {
             queue.add(action);
             executeNextAction();
-        } else {
-            queue.add(action);
-        }
+        } else queue.add(action); 
     }
 
     public BrewAction nextAction() {
@@ -60,9 +59,8 @@ public class Brewer {
         action.executeFor(kettle);
         logger.finest(() -> format("Brewer: action completed. Remaining in queue %s", queue));
         actionExecuted.fire(action);
-        if (action.isCompleted()) {
+        if (action.isCompleted()) 
             queue.remove();
-        }
         executeNextAction();
     }
 
