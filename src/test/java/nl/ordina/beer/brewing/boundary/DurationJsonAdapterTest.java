@@ -7,9 +7,9 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
-public class DurationXmlAdapterTest {
+public class DurationJsonAdapterTest {
     
-    private final DurationXmlAdapter sut = new DurationXmlAdapter();
+    private final DurationJsonAdapter sut = new DurationJsonAdapter();
     
     @Test
     public void unmarshal() throws Exception {

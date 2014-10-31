@@ -37,7 +37,7 @@ public class BrewerResource {
     private Brewer brewer;
 
     @Inject
-    DurationXmlAdapter durationAdapter;
+    DurationJsonAdapter durationAdapter;
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)

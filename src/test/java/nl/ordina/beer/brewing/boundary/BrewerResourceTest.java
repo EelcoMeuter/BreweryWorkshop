@@ -27,7 +27,7 @@ public class BrewerResourceTest {
     @Mock
     private Logger logger;
 
-    private DurationXmlAdapter durationAdapter = new DurationXmlAdapter();
+    private DurationJsonAdapter durationAdapter = new DurationJsonAdapter();
 
     @Test
     public void request_to_add_ingredient_should_add_action_to_brewer() {

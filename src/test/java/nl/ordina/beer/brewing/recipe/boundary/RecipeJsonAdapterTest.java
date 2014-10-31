@@ -15,9 +15,9 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
-public class RecipeXmlAdapterTest {
+public class RecipeJsonAdapterTest {
 
-    private RecipeXmlAdapter sut = new RecipeXmlAdapter();
+    private RecipeJsonAdapter sut = new RecipeJsonAdapter();
 
     @Test
     public void test_unmarshal() {
